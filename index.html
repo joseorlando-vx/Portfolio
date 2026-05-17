@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>José Orlando | Portfólio</title>
+  <meta name="description" content="Portfólio de José Orlando Vieira Xavier — Analista Comercial e Estudante de ADS em transição para Tecnologia. Brasília, DF."/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:      #09090f;
+      --surface: #0f0f18;
+      --card:    #13131e;
+      --border:  #1c1c2e;
+      --accent:  #e63946;
+      --gold:    #ffd166;
+      --text:    #eaeaf5;
+      --muted:   #6e6e96;
+      --soft:    #9898b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 3rem;
+      background: rgba(9,9,15,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem;
+      color: var(--text); text-decoration: none; letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .glow {
+      position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .glow-red  { top:-200px; right:-150px; width:700px; height:700px; background:radial-gradient(circle,rgba(230,57,70,.13) 0%,transparent 68%); }
+    .glow-gold { bottom:-150px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(255,209,102,.07) 0%,transparent 68%); }
+
+    .hero-inner {
+      max-width: 1080px; margin: 0 auto; width: 100%;
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content {}
+
+    /* FOTO */
+    .hero-photo-wrap {
+      opacity: 0; animation: fadeUp .7s .2s forwards;
+    }
+    .hero-photo {
+      width: 280px; height: 340px;
+      object-fit: cover; object-position: center top;
+      border-radius: 16px;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 60px rgba(230,57,70,.15), 0 20px 60px rgba(0,0,0,.5);
+      display: block;
+    }
+    .hero-photo-accent {
+      position: relative;
+    }
+    .hero-photo-accent::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(230,57,70,.3), transparent 60%);
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(230,57,70,.1); border: 1px solid rgba(230,57,70,.3);
+      color: var(--accent); font-size: .75rem; font-weight: 600;
+      padding: .32rem .85rem; border-radius: 2rem;
+      letter-spacing: .09em; text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp .6s .1s forwards;
+    }
+    .badge::before { content:''; width:6px; height:6px; background:var(--accent); border-radius:50%; }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-weight: 800; line-height: 1.06; letter-spacing: -.025em;
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp .65s .2s forwards;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--soft); max-width: 520px;
+      line-height: 1.75; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp .65s .3s forwards;
+    }
+
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .65s .4s forwards;
+    }
+
+    .hero-contacts {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      opacity: 0; animation: fadeUp .65s .5s forwards;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: .45rem;
+      color: var(--muted); font-size: .85rem;
+      text-decoration: none; transition: color .2s;
+    }
+    .contact-item:hover { color: var(--text); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block; padding: .8rem 1.9rem;
+      border-radius: 5px; font-weight: 500; font-size: .92rem;
+      text-decoration: none; transition: all .22s; cursor: pointer; border: none;
+    }
+    .btn-primary { background:var(--accent); color:#fff; border:1px solid var(--accent); }
+    .btn-primary:hover { background:#c1121f; border-color:#c1121f; }
+    .btn-outline { background:transparent; color:var(--text); border:1px solid var(--border); }
+    .btn-outline:hover { border-color:var(--soft); }
+
+    /* SECTIONS */
+    .section-wrap { max-width: 1080px; margin: 0 auto; padding: 5rem 3rem; }
+    .divider { height: 1px; background: var(--border); max-width: 1080px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .65rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.2; margin-bottom: .9rem;
+    }
+    .section-sub { color: var(--muted); max-width: 520px; margin-bottom: 2.8rem; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .about-text p { color: var(--soft); margin-bottom: 1rem; line-height: 1.8; }
+    .about-text p strong { color: var(--text); }
+    .about-text blockquote {
+      margin-top: 1.5rem; padding: 1.2rem 1.5rem;
+      background: var(--card); border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-style: italic; color: var(--soft); font-size: .95rem; line-height: 1.7;
+    }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.4rem 1.3rem; transition: border-color .22s;
+    }
+    .stat:hover { border-color: rgba(230,57,70,.5); }
+    .stat-n {
+      font-family: 'Syne', sans-serif; font-size: 1.9rem;
+      font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: .35rem;
+    }
+    .stat-l { font-size: .82rem; color: var(--muted); }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .exp-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem 1.75rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: .4rem 1.5rem; align-items: start;
+      transition: border-color .22s, transform .22s;
+    }
+    .exp-card:hover { border-color: rgba(230,57,70,.35); transform: translateX(4px); }
+    .exp-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
+    .exp-company { color: var(--accent); font-size: .9rem; font-weight: 500; }
+    .exp-period { color: var(--muted); font-size: .8rem; white-space: nowrap; text-align: right; padding-top: .15rem; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: .9rem; }
+    .skill {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 9px; padding: 1.1rem 1.35rem;
+      display: flex; align-items: center; gap: .7rem; transition: all .22s;
+    }
+    .skill:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-ico {
+      width: 34px; height: 34px; background: rgba(230,57,70,.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0;
+    }
+    .skill-name { font-size: .88rem; font-weight: 500; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.4rem; }
+    .proj {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.7rem;
+      position: relative; overflow: hidden;
+      transition: all .25s; display: flex; flex-direction: column;
+    }
+    .proj::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .proj:hover::before { transform: scaleX(1); }
+    .proj:hover { border-color: rgba(230,57,70,.3); transform: translateY(-3px); }
+    .proj-tag {
+      display: inline-block; background: rgba(230,57,70,.1);
+      color: var(--accent); font-size: .72rem; font-weight: 600;
+      padding: .2rem .65rem; border-radius: 2rem;
+      margin-bottom: .9rem; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .proj h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .55rem; }
+    .proj p { font-size: .88rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1.4rem; }
+    .proj-links { display: flex; gap: .75rem; margin-top: auto; }
+    .proj-link {
+      font-size: .8rem; color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: .3rem; transition: color .2s;
+    }
+    .proj-link:hover { color: var(--accent); }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 3.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .contact-box::after {
+      content: ''; position: absolute; bottom: -80px; right: -80px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle,rgba(230,57,70,.09) 0%,transparent 70%);
+      pointer-events: none;
+    }
+    .contact-box h3 { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 700; margin-bottom: .7rem; }
+    .contact-box .quote {
+      font-style: italic; color: var(--soft); max-width: 540px;
+      margin: 0 auto 2.2rem; font-size: .98rem; line-height: 1.7;
+    }
+    .contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .contact-detail-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .contact-detail { display: flex; align-items: center; gap: .4rem; color: var(--muted); font-size: .85rem; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 1.8rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--muted); font-size: .82rem;
+    }
+    footer span { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: flex; justify-content: center; order: -1; }
+      .hero-photo { width: 200px; height: 240px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 3.5rem; }
+      .section-wrap { padding: 3.5rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .exp-card { grid-template-columns: 1fr; }
+      .exp-period { text-align: left; }
+      .contact-box { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: .5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">José<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="glow glow-red"></div>
+  <div class="glow glow-gold"></div>
+  <div class="hero-inner">
+
+    <div class="hero-content">
+      <div class="badge">Analista Comercial → Tecnologia</div>
+      <h1>José Orlando<br/><em>Vieira Xavier</em></h1>
+      <p class="hero-sub">
+        Estudante de ADS no CEUB e Analista Comercial na MC2 Engenharia de Automação.
+        Construindo minha trajetória em tecnologia com propósito, visão de negócio e aprendizado contínuo.
+      </p>
+      <div class="hero-cta">
+        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+        <a href="#contato" class="btn btn-outline">Entrar em Contato</a>
+      </div>
+      <div class="hero-contacts">
+        <a href="mailto:joseorlandovx@gmail.com" class="contact-item">✉️ joseorlandovx@gmail.com</a>
+        <a href="https://linkedin.com/in/joseorlandovieira" class="contact-item" target="_blank">💼 LinkedIn</a>
+        <a href="https://instagram.com/joseorlandovx" class="contact-item" target="_blank">📷 @joseorlandovx</a>
+        <span class="contact-item">📍 Brasília, DF</span>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-accent">
+        <img class="hero-photo" src="foto.jpg" alt="José Orlando Vieira Xavier"/>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="section-wrap" id="sobre">
+  <div class="section-label">Quem sou eu</div>
+  <h2 class="section-title">Sobre mim</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Sou <strong>José Orlando Vieira Xavier</strong>, estudante de Análise e Desenvolvimento de Sistemas (ADS) no CEUB, com trajetória construída a partir de iniciativa, visão de negócio e vontade constante de evoluir.</p>
+      <p>Ao longo da minha jornada, desenvolvi experiência em <strong>gestão comercial, negociação, liderança de equipes e estruturação de processos</strong>, sempre com foco em resultado e geração de valor.</p>
+      <p>Hoje, direciono essa bagagem para a área de tecnologia, buscando unir <strong>raciocínio lógico, visão estratégica e aprendizado contínuo</strong> para construir uma carreira sólida e relevante.</p>
+      <blockquote>"Escolhi a tecnologia como caminho de construção. Cada linha de código, cada projeto e cada conexão fazem parte dessa jornada."</blockquote>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-n">2026</div><div class="stat-l">Início da graduação em ADS — CEUB</div></div>
+      <div class="stat"><div class="stat-n">B2</div><div class="stat-l">Certificação de Inglês — EF / CEFR</div></div>
+      <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Anos de experiência comercial</div></div>
+      <div class="stat"><div class="stat-n">BSB</div><div class="stat-l">Brasília, Distrito Federal — Brasil</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-wrap" id="experiencia">
+  <div class="section-label">Trajetória</div>
+  <h2 class="section-title">Experiência Profissional</h2>
+  <p class="section-sub">Histórico de atuação com foco em resultado, operação e crescimento comercial.</p>
+  <div class="exp-list">
+    <div class="exp-card">
+      <div><div class="exp-role">Analista Comercial</div><div class="exp-company">MC2 Engenharia de Automação</div></div>
+      <div class="exp-period">Dez 2025 — Atual</div>
+    </div>
+    <div class="exp-card">
+      <div><div class="exp-role">Gestor Comercial e Estratégico</div><div class="exp-company">Astra Finance</div></div>
+      <div class="exp-period">Ago 2023 — Nov 2025</div>
+    </div>
+    <div class="exp-card">
+      <div><div class="exp-role">Vendedor / Gerente</div><div class="exp-company">JustCred</div></div>
+      <div class="exp-period">Fev 2020 — Ago 2023</div>
+    </div>
+    <div class="exp-card">
+      <div><div class="exp-role">Operador de Caixa</div><div class="exp-company">Sendas Distribuidora S.A (Assaí Atacadista)</div></div>
+      <div class="exp-period">Jun 2019 — Jan 2020</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-wrap" id="projetos">
+  <div class="section-label">Trabalhos</div>
+  <h2 class="section-title">Projetos</h2>
+  <p class="section-sub">Iniciativas acadêmicas, profissionais e pessoais que marcam minha evolução.</p>
+  <div class="projects-grid">
+    <div class="proj">
+      <span class="proj-tag">Empreendedor</span>
+      <h3>Livha Club</h3>
+      <p>Marca autoral de garrafas térmicas criada do zero. Atuei em todas as frentes: branding, precificação, operação digital no Instagram, atendimento e logística.</p>
+      <div class="proj-links"><span class="proj-link">🏷️ Marca própria</span></div>
+    </div>
+
+    <div class="proj">
+      <span class="proj-tag">Pessoal</span>
+      <h3>Portfólio Web</h3>
+      <p>Este site — desenvolvido com HTML e CSS puro, versionado com Git e publicado via GitHub Pages como primeiro projeto técnico da minha transição para tecnologia.</p>
+      <div class="proj-links">
+        <a href="#" class="proj-link">🔗 Ver site</a>
+        <a href="https://github.com/joseorlando-vx/portfolio" class="proj-link" target="_blank">📂 Repositório</a>
+      </div>
+    </div>
+    <div class="proj">
+      <span class="proj-tag">Certificação</span>
+      <h3>Inglês — CEFR B2</h3>
+      <p>Certificação B2 pela EF (março 2026) com desenvolvimento contínuo da fluência. Objetivo de alcançar C1 para ampliar oportunidades profissionais internacionais.</p>
+      <div class="proj-links"><span class="proj-link">🏅 EF / CEFR — Mar 2026</span></div>
+    </div>
+    <div class="proj">
+      <span class="proj-tag">Estratégico</span>
+      <h3>Transição para Tecnologia</h3>
+      <p>Direcionamento da carreira para tecnologia: Python → SQL → IA → Cloud, com foco em freelance internacional e independência financeira via desenvolvimento de software.</p>
+      <div class="proj-links"><span class="proj-link">🚀 Em andamento</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-wrap" id="skills">
+  <div class="section-label">Competências</div>
+  <h2 class="section-title">Habilidades & Ferramentas</h2>
+  <p class="section-sub">Tecnologias que estou aprendendo e aplicando na prática.</p>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-ico">🐍</div><span class="skill-name">Python</span></div>
+    <div class="skill"><div class="skill-ico">🗄️</div><span class="skill-name">SQL / Banco de Dados</span></div>
+    <div class="skill"><div class="skill-ico">🔧</div><span class="skill-name">Git & GitHub</span></div>
+    <div class="skill"><div class="skill-ico">🌐</div><span class="skill-name">HTML & CSS</span></div>
+    <div class="skill"><div class="skill-ico">⚙️</div><span class="skill-name">Automação (n8n)</span></div>
+    <div class="skill"><div class="skill-ico">📐</div><span class="skill-name">Engenharia de Software</span></div>
+    <div class="skill"><div class="skill-ico">🗂️</div><span class="skill-name">Modelagem ER</span></div>
+    <div class="skill"><div class="skill-ico">💼</div><span class="skill-name">Gestão Comercial</span></div>
+    <div class="skill"><div class="skill-ico">🤝</div><span class="skill-name">Negociação</span></div>
+    <div class="skill"><div class="skill-ico">🇺🇸</div><span class="skill-name">Inglês B2</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-wrap" id="contato">
+  <div class="contact-box">
+    <h3>Vamos conversar?</h3>
+    <p class="quote">"Escolhi a tecnologia como caminho de construção. Cada linha de código, cada projeto e cada conexão fazem parte dessa jornada."</p>
+    <div class="contact-row">
+      <a href="https://linkedin.com/in/joseorlandovieira" class="btn btn-primary" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/joseorlando-vx" class="btn btn-outline" target="_blank">🐙 GitHub</a>
+      <a href="mailto:joseorlandovx@gmail.com" class="btn btn-outline">✉️ E-mail</a>
+    </div>
+    <div class="contact-detail-row">
+      <span class="contact-detail">📱 (61) 98195-7242</span>
+      <span class="contact-detail">📷 @joseorlandovx</span>
+      <span class="contact-detail">📍 Brasília, DF — Brasil</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>José Orlando</span> Vieira Xavier &mdash; ADS · CEUB · Brasília, DF · 2026
+</footer>
+
+</body>
+</html>
