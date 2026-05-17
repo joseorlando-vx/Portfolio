@@ -16,7 +16,7 @@ Este repositório foi desenvolvido como parte do **Desafio de Entrega Intermedi�
 
 O projeto central é um **portfólio pessoal** desenvolvido com HTML5 e CSS3 puro, publicado como site estático pelo GitHub Pages, que reúne minha trajetória profissional, projetos, habilidades técnicas e informações de contato.
 
-🔗 **Acesse o site:** [joseorlando-vx.github.io/portfolio](https://joseorlando-vx.github.io/portfolio)
+🔗 **Acesse o site:** https://joseorlando-vx.github.io/Portfolio/
 
 ---
 
@@ -135,7 +135,7 @@ O site é composto por **6 seções** com navegação por âncoras:
 
 O site foi publicado gratuitamente através do **GitHub Pages**, acessível pelo link:
 
-**[https://joseorlando-vx.github.io/portfolio](https://joseorlando-vx.github.io/portfolio)**
+https://joseorlando-vx.github.io/Portfolio/
 
 ### Como foi configurado
 
