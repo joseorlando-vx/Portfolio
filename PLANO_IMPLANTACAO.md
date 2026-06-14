@@ -3,7 +3,7 @@
 **Autor:** José Orlando Vieira Xavier  
 **Matrícula:** 22610685  
 **Curso:** Análise e Desenvolvimento de Sistemas — CEUB  
-**Disciplina:** Implantação de Sistemas — Prof. Marcelo Carboni  
+**Disciplina:** Bootcamp 1 — Prof. Marcelo Carboni  
 **Data:** Junho de 2026  
 
 ---
