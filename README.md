@@ -27,7 +27,6 @@ python -m http.server 8000
 ```
 index.html     the site
 foto.jpg       profile photo
-academico/     coursework exercises (CEUB)
 ```
 
 ## Contact
